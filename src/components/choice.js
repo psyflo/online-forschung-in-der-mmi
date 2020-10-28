@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { Button } from './button'
 import classes from '../styles/choice.module.sass'
 
-const Choice = ({ id = '0', children = [] }) => {
+const Choice = ({ children = [] }) => {
     const [selected, setSelected] = useState(null)
     const [answer, setAnswer] = useState(null)
     const handleAnswer = useCallback(() => setAnswer(selected), [selected])
@@ -15,8 +15,8 @@ const Choice = ({ id = '0', children = [] }) => {
                 <p key={key} className={classes.option}>
                     <input
                         className={classes.input}
-                        name={`choice-${id}`}
-                        id={`choice-${id}-${i}`}
+                        name="choice"
+                        id={`choice-${i}`}
                         value={i}
                         type="radio"
                         checked={selected === i}
@@ -24,7 +24,7 @@ const Choice = ({ id = '0', children = [] }) => {
                     />
                     <label
                         className={classes.label}
-                        htmlFor={`choice-${id}-${i}`}
+                        htmlFor={`choice-${i}`}
                         dangerouslySetInnerHTML={{ __html: `<span>${props.text}</span>` }}
                     />
                 </p>
