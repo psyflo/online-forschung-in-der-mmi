@@ -1,13 +1,10 @@
-library(rjson)
 library(ggplot2)
+gap1992 <- read.csv("data/gap1992.csv")
 
-# This code will run relative to the root of the repo, so we can load files
-data <- fromJSON(file = "exercises/mtcars.json")
+ggplot(data=gap1992, 
+    mapping = aes(
+      x = log(gdpPercap), 
+      y = lifeExp 
+      )) + 
+geom_point()
 
-# Print the first record in the data
-print(data[1])
-
-# Assign the length of data to some_var
-some_var <- length(data)
-
-qplot(mpg, data = data)
